@@ -75,4 +75,77 @@ Prepare ``` routes/api.php ```
 
 Initialize GIT
 
-```  ```
+```  
+[dadawashingmachine@localhost laravel_api]$ git init
+[dadawashingmachine@localhost laravel_api]$ git add .
+[dadawashingmachine@localhost laravel_api]$ git commit -m "first commit"
+[dadawashingmachine@localhost laravel_api]$ git branch -M main
+[dadawashingmachine@localhost laravel_api]$ git remote add origin https://github.com/deepsquad-dev/laravel-api.git
+[dadawashingmachine@localhost laravel_api]$ git push -u origin main
+
+```
+### Automated testing
+
+Create a testing database
+
+Create .env.testing 
+
+Add this to  the phpunit.xml file: 
+```
+        <testsuite name="API">
+            <directory suffix="Test.php">./tests/API</directory>
+        </testsuite>
+```
+Remove the Feature test example
+
+./vendor/bin/phpunit
+
+### Install NUXT.js as frontend app
+npx --version
+npx create-nuxt-app frontend
+cd frontend
+
+Add NUXT urls
+.
+.
+.
+
+#### Abstracting API callbacks into reusable modules
+Create /api directory in the frontend folder
+Create file customAPI.js in the /plugins folder
+Create the export, const and inject pattern
+
+Update the nuxt.config.js file with the plugin details '~/plugins/customAPI.js'
+
+Add the axios key to nuxt.config.js
+
+axios: {
+    baseURL: '{BASE_URL_HERE}',
+    credentials: true
+},
+
+Create a module file entities.js for example and addd the code
+```
+export default axios => ({
+    async index( params ) {
+        return await $axios.$get('/api/v1/entities', {
+            params: params
+        });
+    },
+});
+```
+Add an import in customAPI.js
+import EntitiesAPI from '@/api/entities.js'
+Add the object to the const array
+
+Call from the code as this.api.entities.index()
+
+### Managing events witn the Event Bus
+
+Add event-bus.js to the root of the Frontend folder
+
+
+
+
+
+
