@@ -144,6 +144,26 @@ Call from the code as this.api.entities.index()
 
 Add event-bus.js to the root of the Frontend folder
 
+### Mixins
+
+Create /mixins folder in the root of the NUXT install
+
+### Layouts
+
+Add file App.vue to layouts
+
+Create a folder components/global
+
+Examples 
+Add components/global/Header containing AppHeader.vue component
+Add components/global/Footer containing AppFooter.vue component
+
+
+
+
+
+
+
 
 
 
