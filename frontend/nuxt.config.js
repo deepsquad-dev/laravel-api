@@ -38,14 +38,55 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/dotenv',
+    '@nuxtjs/auth-next',
   ],
+
+  proxy: {
+    '/laravel': {
+         //target: 'https://laravel-auth.nuxtjs.app',
+         //pathRewrite: { '^/laravel': '/'}
+
+    }
+  },
+  auth: {
+      redirect: {
+          login: '/',
+          home: false
+      },
+      strategies: {
+          'laravelSanctum': {
+            provider:  'laravel/sanctum',
+            url: 'http://localhost:8000',//process.env.API_BASE_URL,
+            endpoints: {
+              login: {
+                url: '/login'
+              },
+              user: {
+                url: '/api/v1/user'
+              },
+              logout: {
+                url: '/logout'
+              }
+            }
+          }  
+      }
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   },
+   
+  compilerOptions: {
+    "types": [
+      "@nuxtjs/auth-next"
+    ]
+  },
 
   axios: {
-    baseURL: 'http://127.0.0.0:3000',
+    proxy: true,
+    //baseURL: 'http://127.0.0.0:3000',
     credentials: true
   }
 }

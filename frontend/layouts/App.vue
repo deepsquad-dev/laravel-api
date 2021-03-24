@@ -2,6 +2,9 @@
     <div id="app-layout"
         class="flex flex-col min-h-screen w-screen select-none">
         <div>
+            <navigation/>
+        </div>
+        <div>
             <app-header v-show="showHeader"/>
         </div>
 
@@ -29,6 +32,17 @@ export default {
     components: {
         AppHeader,
         AppFooter
+    },
+    computed: {
+        showFooter() {
+            let pages = [];
+        },
+
+        showHeader() {
+            let pages = [];
+
+            return pages.indexOf(this.$route.name) == -1;
+        }
     }
 }
 </script>
